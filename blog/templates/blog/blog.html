@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+  Blog - Main site
+          {% endblock %}
+{% load crispy_forms_tags %}
+{% block style %}
+  .col2{
+  height:100px;
+  background:grey;
+border:1px solid red;
+}
+.search-box {
+  display: flex;
+  width: 450px;
+}
+{% endblock %}
+
+
+{% block content %}
+   <div class="container my-5">
+    <div class="col-md-4 offset-sm-4  border p-4 my-5">
+        <h2 class="text-center text-secondary">Search:</h2>
+      <form method="GET">
+        {{ filter.form|crispy}}
+        <input type="submit" class="btn btn-outline-success my-1"  value="Search"/>
+      </form>
+    </div>
+       <div class="row">
+
+
+    <div class="col-md-12">
+      <table class="table table-striped table-hover">
+        <thead>
+          <tr class="bg-primary text-white">
+            <th>Id</th>
+            <th>Títle</th>
+            <th>Content</th>
+            <th>Publiched date</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+
+              {% if object_list.qs %}
+                   {% for obj in object_list.qs %}
+                        <tr>
+                            <td>{{forloop.counter}}</td>
+                            <td>{{ obj.title }}</td>
+                            <td style="width:500px">{{ obj.content }}</td>
+                           <td>{{ obj.published_date|timesince }}</td>
+                            <td><a href="{% url 'detail' obj.id %}">More..</a></td>
+                        </tr>
+                    {% endfor %}
+              {% else %}
+              <tr>
+
+                            <td colspan="5"><h3 class="text-center">NO POST FOUND.</h3></td>
+
+              <tr>
+              {% endif %}
+
+
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}

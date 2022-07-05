@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+  Email - Main site
+          {% endblock %}
+{% load crispy_forms_tags %}
+
+
+        <!-- Page Header-->
+{% block content %}
+<h1>Test</h1>
+  <h1>{{ subject }}</h1>
+  <p>
+      {{ msg }}
+  </p>
+  {% endblock %}

@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}
+  Blog Detail
+{% endblock %}
+
+{% block style %}
+
+<style>
+body{
+background:red;
+}
+
+.demo-content{
+        padding: 45px;
+        font-size: 18px;
+        background: red;
+        margin-bottom: 10px;
+    }
+.demo-content.bg-alt{
+        background: #abb1b8;
+    }
+</style>
+
+{% endblock %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<br/>
+<div class="container my-5">
+{% if post.pic %}
+        <img src="{{ post.pic.url }}" alt="{{ post.title }}">
+      {% endif %}
+<h3>
+    {{ post.title }}
+</h3>
+    <p>
+        {{ post.content }}
+    </p>
+    <a href="{% url 'blog.posts' %}" class="btn btn-outline-success">Back</a>
+</div>
+<div class="col-md-4 offset-md-4">
+{% if user.is_authenticated  %}
+<div class="container">
+    <form action="" method="POST">
+     {% csrf_token %}
+     {{form|crispy}}
+        <br/>
+        <button type="submit" class="btn btn-primary">Add Comment</button>
+   </form>
+</div>
+{% endif %}
+</div>
+
+
+{% if post.comments %}
+<h3 class="text-center">Comments:</h3>
+<div class="row">
+{% for tt in post.comments.all %}
+   <div class="col-md-4 offset-md-4 border">
+    Name: <strong>{{ tt.name }}</strong>
+      <br />
+   Comment: {{ tt.text }}
+  <br />
+ added:<strong class="float-end  text-success"> {{ tt.comment_date|timesince }} </strong>
+  <br />
+</div>
+
+
+{% endfor  %}
+</div>
+    {% endif %}
+
+
+ <div class="row">
+        <div class="col-md-3 offset-md-9">
+            <div class="demo-content bg-alt">.col-md-3 .offset-md-3</div>
+        </div>
+        <div class="col-md-3 offset-md-3">
+            <div class="demo-content">.col-md-3 .offset-md-3</div>
+        </div>
+    </div>
+{% endblock %}

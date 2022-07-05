@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+  Employee - Company {{ today }}
+          {% endblock %}
+
+
+
+        <!-- Page Header-->
+{% block content %}
+<div class="container mt-3">
+  <h2 class="text-success text-center">Repairations List</h2>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Salary</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{ employee.name}}</td>
+        <td>{{ employee.email}}</td>
+        <td>{{ employee.salary}}</td>
+
+      </tr>
+    </tbody>
+  </table>
+  <h2>Cars</h2>
+  {% for car in cars %}
+  <li>
+    <div>
+    <h3>{{ car.model }}</h3>
+    <p>{{ car.year }}</p>
+      <strong><a href="{% url 'repairs' car.id %}">Repairations List</a> </strong>
+
+    </div>
+
+  </li>
+  <hr/>
+  {% endfor %}
+</div>
+
+  {% endblock %}

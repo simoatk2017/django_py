@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+  Blog - Main site
+          {% endblock %}
+{% load crispy_forms_tags %}
+{% block style %}
+  .col2{
+  height:100px;
+  background:grey;
+border:1px solid red;
+}
+.search-box {
+  display: flex;
+  width: 450px;
+}
+{% endblock %}
+
+
+{% block content %}
+      <div class="container">
+        <div style="border: 1px dashed #333;" >
+            <h5 style="text-align: center;" >Book Filtering</h5>
+        </div>
+
+        <div style="" >
+
+            <div>
+                <h5>Filter Form</h5>
+                <div>
+                    <form action="" method="get">
+                        {{books.form}}
+                        <input type="submit" value="Filter">
+                    </form>
+                </div>
+            </div>
+
+            <table border="1" style="border-collapse: collapse">
+                <thead>
+                    <tr>
+                        <th>Sl no</th>
+                        <th>Book Name</th>
+                        <th>Author</th>
+                        <th>Book Status</th>
+                        <th>Total Books Count</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for book in books.qs %}
+                    <tr>
+                        <td>{{forloop.counter}}</td>
+                        <td>{{book.book_name}}</td>
+                        <td>({{book.author.id}}) <strong>{{book.author.author_name}}</strong></td>
+                        <td>{{book.get_status_verbose_name}}</td>
+                        <td>{{book.author.get_books_count}}</td>
+                        <td>{{book.status}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

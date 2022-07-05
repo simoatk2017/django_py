@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+  Blog - Main site
+          {% endblock %}
+{% load crispy_forms_tags %}
+
+{% block extracss %}
+  <link href="{% static 'css/skills.css' %}" rel="stylesheet" />
+{% endblock %}
+
+        <!-- Page Header-->
+         {% block header %}
+          <header class="masthead" style="background-image: url('/static/assets/img/about-bg.jpg')">
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="page-heading">
+                            <h1>About Me</h1>
+                            <span class="subheading">Im software  developer and teacher.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+         {% endblock %}
+         {% block content %}
+        <!-- Main Content-->
+        <main class="mb-4">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe nostrum ullam eveniet pariatur voluptates odit, fuga atque ea nobis sit soluta odio, adipisci quas excepturi maxime quae totam ducimus consectetur?</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius praesentium recusandae illo eaque architecto error, repellendus iusto reprehenderit, doloribus, minus sunt. Numquam at quae voluptatum in officia voluptas voluptatibus, minus!</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut consequuntur magnam, excepturi aliquid ex itaque esse est vero natus quae optio aperiam soluta voluptatibus corporis atque iste neque sit tempora!</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <!-- Footer-->
+<div class="container-skils bg-primary">
+  <div class="col">
+    <h2 class="titulo">Programming</h2>
+    <ul class="skill">
+      <li><span class="blueline html"></span><em>HTML</em></li>
+      <li><span class="blueline css"></span><em>CSS</em></li>
+      <li><span class="blueline css"></span><em>Python</em></li>
+      <li><span class="blueline php"></span><em>PHP</em></li>
+      <li><span class="blueline javascript"></span><em>Javascript</em></li>
+      <li><span class="blueline jquery"></span><em>jQuery</em></li>
+     <li><span class="blueline jquery"></span><em>C++</em></li>
+    </ul>
+  </div>
+  	<div class="col">
+    <h2 class="plataformas titulo">Frameworks</h2>
+    <ul class="skill">
+      <li><span class="greenline wordpress"></span><em>Wordpress</em></li>
+      <li><span class="greenline prestashop"></span><em>Django</em></li>
+      <li><span class="greenline joomla"></span><em>Nodejs</em></li>
+     <li><span class="greenline joomla"></span><em>React</em></li>
+
+    </ul>
+  </div>
+  	<div class="col">
+    <h2 class="programas titulo">Softwares</h2>
+    <ul class="skill">
+      <li><span class="redline dreamweaver"></span><em>Dreamweaver</em></li>
+      <li><span class="redline illustrator"></span><em>Illustrator</em></li>
+      <li><span class="redline photoshop"></span><em>Photoshop</em></li>
+      <li><span class="redline premiere"></span><em>Premiere</em></li>
+      <li><span class="redline flash"></span><em>Flash</em></li>
+    </ul>
+  </div>
+    <div class="col">
+    <h2 class="programas titulo">Databases</h2>
+    <ul class="skill">
+      <li><span class="redline dreamweaver"></span><em>MySQL</em></li>
+      <li><span class="redline illustrator"></span><em>Postgres</em></li>
+      <li><span class="redline photoshop"></span><em>Mongodb</em></li>
+
+    </ul>
+  </div>
+
+
+
+</div>
+<!-- idea original en: http://www.alessioatzeni.com/blog/css3-skill-bar-animation/ -->
+  {% endblock %}

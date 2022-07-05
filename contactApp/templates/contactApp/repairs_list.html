@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load custom_tags %}
+{% load static %}
+{% block title %}
+  Employee - Company {{ today }}
+          {% endblock %}
+
+
+
+        <!-- Page Header-->
+
+{% block content %}
+{% comment %} index.html {% endcomment %}
+
+<div class="container mt-3">
+  <h2  class="text-success text-center">{{ car.model }}</h2>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Company</th>
+        <th>Email</th>
+        <th>Price</th>
+        <th>Date</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for repair in repairs %}
+      <tr>
+        <td>{{ repair.company }}</td>
+        <td>{{ repair.email }}</td>
+        <td>{{ repair.price_repair }}</td>
+        <td>{{ repair.date_repair }}</td>
+        <td>{{ repair.description_of_repairation }}</td>
+      </tr>
+    {% endfor %}
+    </tbody>
+      <tfoot>
+      <tr>
+        <td colspan="3"><strong>Total : {{ total }}</strong></td>
+      </tr>
+    </tfoot>
+  </table>
+</div>
+
+  {% endblock %}

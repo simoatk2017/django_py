@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <styLe>
+       .errorlist {
+        color:red;
+        font-size:1.5rem;
+        }
+    </styLe>
+</head>
+<body>
+{% if firstName and lastName and age %}
+<h1 style="color:blue;">You submited this Data:</h1>
+  <li>
+   FirstName:  <strong>
+         {{ firstName }}
+     </strong>
+  </li>
+<li>
+   LastName:  <strong>
+         {{ lastName }}
+     </strong>
+  </li>
+<li>
+   Age:  <strong>
+         {{ age }}
+     </strong>
+  </li>
+<li>
+   Eamil:  <strong>
+         {{ email }}
+     </strong>
+  </li>
+<li>
+   Gender:  <strong>
+         {{ gender }}
+     </strong>
+  </li>
+{% endif %}
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Send</button>
+
+</form>
+</body>
+</html>

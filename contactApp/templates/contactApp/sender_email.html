@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+  Email - Main site
+          {% endblock %}
+{% load crispy_forms_tags %}
+
+
+
+        <!-- Page Header-->
+{% block content %}
+<form method="POST">
+  {% csrf_token %}
+  <table>
+  {{ form.as_table}}
+  </table>
+  <button type="submit">Send</button>
+</form>
+  {% endblock %}

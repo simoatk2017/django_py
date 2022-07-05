@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+  Blog - Main site
+          {% endblock %}
+{% load crispy_forms_tags %}
+{% block extracss %}
+
+{% endblock %}
+
+
+
+
+
+
+        <!-- Page Header-->
+         {% block header %}
+           <header class="masthead" style="background-image: url('/static/assets/img/home-bg.jpg')">
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="site-heading">
+                            <h1>Web dev blog</h1>
+                            <span class="subheading">{{date}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+         {% endblock %}
+         {% block content %}
+        <!-- Main Content-->
+<div class="header-text text-center mt-5 ">
+
+            </div>
+<div class="row">
+                <div class="container my-5">
+                <div class="col-md-4 offset-sm-4  border p-4 my-5">
+                    <h2 class="text-center text-secondary">Search:</h2>
+                  <form method="GET">
+                   {{ myFilter.form|crispy}}
+                    <input type="submit" class="btn btn-outline-success my-1"  value="Search4444"/>
+                  </form>
+                </div>
+            </div>
+</div>
+
+        <div class="container px-4 px-lg-5">
+    <span class="header-content1">
+                    Articles
+                </span>
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                   {% if articles %}
+
+                   {% for obj in articles %}
+                    <!-- Post preview-->
+
+
+
+                            <p class="post-title1"><span>{{forloop.counter}}.</span> <a href="{% url 'detail' obj.id %}"> {{ obj.title }} </a></p>
+
+
+                        <p class="post-subtitle">{{ obj.content|truncatechars:100 }}</p>
+                        <p class="post-meta">
+                           <strong>
+                               Posted : {{ obj.published_date|timesince }}
+                           </strong>
+                            <br/>
+                            <a href="{{ obj.get_absolute_url }}">More..</a>
+
+                        </p>
+
+
+
+                    <!-- Divider-->
+                    <hr class="my-4" />
+                   {% endfor%}
+                    <!-- Pager-->
+                   {% else %}
+
+                      <div class="alert alert-danger text-center" role="alert">
+                           No post match.
+                     </div>
+
+                    {% endif %}
+                    <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="#!">Older Posts →</a></div>
+
+                </div>
+
+             </div>
+
+        </div>
+
+        </div>
+</div>
+  {% endblock %}
